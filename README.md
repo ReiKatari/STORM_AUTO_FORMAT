@@ -1,65 +1,43 @@
-<div align="center">
+# STORM AUTO FORMAT
 
-<img src="logo.png" width="128" height="128" alt="STORM AUTO FORMAT Logo" />
+## **О проекте**
+STORM AUTO FORMAT — утилита для автоматического низкоуровневого форматирования, разметки и оптимизации flash-накопителей, SD/microSD карт, внешних жестких дисков и образов носителей. Программа создана для быстрой подготовки накопителей под игровые консоли (Nintendo Switch, PS Vita, PS4, PSP, 3DS) и портативные ретро-консоли с гарантией правильного размера кластера и структуры файловых систем FAT32, exFAT и NTFS.
 
-# ⚡ STORM AUTO FORMAT
+## **Происхождение и форки**
+Оригинальная разработка ReiKatari. Построена на прямом взаимодействии с Windows Storage Management API, Virtual Disk Service (VDS) и низкоуровневыми системными IOCTL-запросами к дисковым накопителям.
 
-<p align="center">
-  <b>Автоматический конвертер и структуризатор таблиц Google Sheets и Excel в унифицированные форматы.</b>
-</p>
+## **Технологический стек**
+- **Языки программирования**: C# (.NET 9.0), C++ (модули прямого Win32/IOCTL доступа)
+- **Графический стек**: Windows Presentation Foundation (WPF), XAML, Modern UI Theme, Hardware Accelerated Rendering
+- **Системные интерфейсы**: Windows Storage Management API, IOCTL_DISK, Virtual Disk API (VDS), WMI Disk Management
+- **Форматирование и ФС**: FAT32 (Fat32Formatter Engine), exFAT, NTFS, MBR/GPT Partition Tables
 
-[![Version](https://img.shields.io/badge/version-1.0.0-00D2FF.svg?style=for-the-badge)](https://github.com/ReiKatari/STORM_AUTO_FORMAT)
-[![Platform](https://img.shields.io/badge/Platform-Windows%2011%20%7C%2010-0EA5E9.svg?style=for-the-badge)](https://github.com/ReiKatari/STORM_AUTO_FORMAT)
-[![Publisher](https://img.shields.io/badge/Publisher-STORM%20TEAM-10B981.svg?style=for-the-badge)](https://github.com/ReiKatari)
-[![Developer](https://img.shields.io/badge/Author-ReiKatari-F59E0B.svg?style=for-the-badge)](https://github.com/ReiKatari)
-[![Signed](https://img.shields.io/badge/Security-SHA256%20Signed-10B981.svg?style=for-the-badge)](https://github.com/ReiKatari)
+## **Ключевые возможности**
+- **Автоматическая разметка под консоли**: Готовые предустановленные профили для Nintendo Switch (FAT32/32KB кластер), PS Vita (TexFAT/exFAT), PS4/PS5 и ретро-консолей.
+- **Форматирование больших дисков в FAT32**: Снятие стандартного ограничения Windows на форматирование накопителей объемом более 32 ГБ в файловую систему FAT32 (поддержка накопителей до 2 ТБ+).
+- **Низкоуровневая очистка и выравнивание 4K**: Полная очистка структуры разделов (Zero-Fill) и аппаратное выравнивание секторов для максимальной скорости чтения/записи на Flash-памяти.
+- **Защита от случайного форматирования**: Автоматическая блокировка системных дисков Windows и встроенные проверки безопасности перед выполнением операций.
+- **Тестирование скорости и целостности**: Встроенный бенчмарк линейной и случайной скорости с проверкой битых секторов (Bad Block Detection).
 
-</div>
+## **Поддерживаемые платформы и эмуляторы**
+- **Операционные системы**: Windows 10, Windows 11, Windows Server (x64, ARM64)
+- **Поддерживаемые типы носителей**: SD, microSD (SDSC, SDHC, SDXC, SDUC), USB Flash, Внешние HDD/SSD, Виртуальные VHD/VHDX диски
+- **Целевые консоли**: Nintendo Switch, Nintendo 3DS, Sony PlayStation Portable (PSP), PlayStation Vita, PlayStation 3/4/5, Xbox 360, Anbernic, Miyoo Mini, Steam Deck
 
----
+## **Установка и запуск**
+1. Перейдите в раздел **Releases** репозитория на GitHub.
+2. Скачайте последнюю версию инсталлятора `StormAutoFormat_Setup.exe` или Portable-версию.
+3. Запустите приложение с правами Администратора (требуется для прямого доступа к дисковым устройствам IOCTL).
+4. Выберите целевой накопитель, примените профиль и нажмите кнопку запуска.
 
-## 🌟 О проекте / Overview
+## **Безопасность и цифровые подписи**
+Бинарные сборки и инсталляторы утилиты подписаны доверенным сертификатом **CN=STORM SOFT, O=STORM EDEN** (SHA-256 Authenticode). Приложение не содержит телеметрии и не выполняет сетевых запросов. Все дисковые операции строго изолированы выбранным накопителем.
 
-**STORM AUTO FORMAT** — компонент программного комплекса **STORM**, разработанный с упором на максимальную производительность, современный дизайн и надёжность.
+## **Авторы и лицензия**
+- **Автор проекта**: ReiKatari
+- **Лицензия**: MIT License
 
-* **Версия:** $ver
-* **Издатель:** STORM TEAM
-* **Ведущий разработчик:** ReiKatari
-* **Технологический стек:** $tech
-
----
-
-## 🚀 Установка / Installation
-
-Установка производится через единый инсталлятор **STORM INSTALLER**:
-
-1. Запустите файл STORM_STORM_AUTO_FORMAT_1.0.0_Setup.exe.
-2. Выберите режим:
-   * **Стандартная установка** — установка в C:\Program Files\STORM AUTO FORMAT с созданием ярлыков и регистрацией в системе.
-   * **Портативная версия** — распаковка в любую выбранную папку без изменения реестра.
-3. Опция автоматической регистрации доверенного сертификата STORM TEAM исключает предупреждения SmartScreen и Smart App Control.
-
----
-
-## 🛡️ Безопасность и Цифровая подпись / Code Signing
-
-Все исполняемые файлы и инсталляторы подписаны сертификатом **STORM TEAM** с использованием хэширования SHA-256 и RFC 3161 Timestamping.
-
-* Для ручной установки сертификата в хранилище доверенных корневых центров запустите:
-  Files\Разблокировать_И_Установить_Сертификат.bat от имени Администратора.
-
----
-
-## 📁 Структура репозитория / Structure
-
-* Assembling/ — скомпилированные релизные бинарные файлы и зависимости программы.
-* Files/ — инсталлятор, сертификат STORM_Certificate.cer и сервисные скрипты.
-* Sources/ — исходный код решения.
-
----
-
-## 👥 Авторы и Лицензия / Credits
-
-* **Разработчик:** [ReiKatari](https://github.com/ReiKatari)
-* **Издатель:** **STORM TEAM**
-* © 2026 STORM TEAM. Все права защищены.
+## **Благодарности**
+- **Команда Microsoft .NET** — за современную высокопроизводительную платформу .NET 9.
+- **Сообщество консольного моддинга (Switch, PS Vita, 3DS)** — за спецификации и требования файловых систем консолей.
+- **Тестировщики экосистемы STORM SOFT** — за проверку стабильности дисковых операций.
